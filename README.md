@@ -18,9 +18,9 @@ A library for controlling those cheap Chinese P10 **single color / monochrome** 
 
 ### PlatformIO (Recommended)
 
-PlatformIO's official ESP32 platform does not yet support Arduino Core v3.0. You must use the community `pioarduino` fork!
+**Note:** PlatformIO's official ESP32 platform does not yet support Arduino Core v3.0. You must use the community `pioarduino` fork.
 
-1.  **Create a `platformio.ini` file** in your project root with the following content:
+**Create a `platformio.ini` file** in your project root with the following content (example for an ESP32 DevKit v1):
 
     ```ini
     [env:your_board]
@@ -29,14 +29,14 @@ PlatformIO's official ESP32 platform does not yet support Arduino Core v3.0. You
 
     board = esp32doit-devkit-v1 ; Change to your board
     framework = arduino
+    lib_deps =
+        https://github.com/alessandroamella/DMD32-v3.git ; This library
     monitor_speed = 115200 ; Optional: set your serial monitor speed
     ```
 
-2.  **Add this library:** Place the `DMD32-v3` library folder into the `lib/` directory of your PlatformIO project.
-
 ### Arduino IDE
 
-1.  **Install ESP32 Core v3.0+:** Make sure you have installed version 3.0.0 or newer of the "esp32" boards package from the Arduino IDE's Boards Manager. Unless you haven't manually downgraded it, it should be already set correctly.
+1.  **Install ESP32 Core v3.0+:** Make sure you have installed version 3.0.0 or newer of the "esp32" boards package from the Arduino IDE's Boards Manager. Unless you manually downgraded it, it should be already set correctly.
 2.  **Install this library:** Download this repository as a ZIP file. In the Arduino IDE, go to `Sketch > Include Library > Add .ZIP Library...` and select the downloaded file.
 
 ## Wiring
@@ -112,6 +112,8 @@ void loop() {
   delay(2000);
 }
 ```
+
+**Note:** Remember to use the new timer syntax! Info about migrating from ESP32 Arduino Core v2.x to v3.0+ can be found in the [official documentation](https://docs.espressif.com/projects/arduino-esp32/en/latest/migration_guides/2.x_to_3.0.html), and in this great article by Random Nerd Tutorials: [ESP32: Migrating from Arduino Core v2.x to v3.0+](https://randomnerdtutorials.com/esp32-migrating-version-2-to-3-arduino/).
 
 **For more examples, check out the [`examples/`](examples/) folder** in this repository.
 
