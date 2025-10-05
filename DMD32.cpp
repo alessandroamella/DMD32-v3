@@ -64,15 +64,27 @@ DMD::DMD(byte panelsWide, byte panelsHigh, uint8_t pin_a, uint8_t pin_b,
   vspi->begin(PIN_DMD_CLK, -1, PIN_DMD_R_DATA, -1); // SCK, MISO, MOSI, SS
 
   // Setup non-SPI pins
-  digitalWrite(PIN_DMD_A, LOW);
-  digitalWrite(PIN_DMD_B, LOW);
-  digitalWrite(PIN_DMD_SCLK, LOW);
-  digitalWrite(PIN_DMD_nOE, LOW);
+
+  // if error, swap these to
+  // digitalWrite(PIN_DMD_A, LOW);
+  // digitalWrite(PIN_DMD_B, LOW);
+  // digitalWrite(PIN_DMD_SCLK, LOW);
+  // digitalWrite(PIN_DMD_nOE, LOW);
+
+  // pinMode(PIN_DMD_A, OUTPUT);
+  // pinMode(PIN_DMD_B, OUTPUT);
+  // pinMode(PIN_DMD_SCLK, OUTPUT);
+  // pinMode(PIN_DMD_nOE, OUTPUT);
 
   pinMode(PIN_DMD_A, OUTPUT);
   pinMode(PIN_DMD_B, OUTPUT);
   pinMode(PIN_DMD_SCLK, OUTPUT);
   pinMode(PIN_DMD_nOE, OUTPUT);
+
+  digitalWrite(PIN_DMD_A, LOW);
+  digitalWrite(PIN_DMD_B, LOW);
+  digitalWrite(PIN_DMD_SCLK, LOW);
+  digitalWrite(PIN_DMD_nOE, LOW);
 
   // REMOVED the following lines to prevent conflict with the Peripheral
   // Manager: digitalWrite(PIN_DMD_CLK, LOW); digitalWrite(PIN_DMD_R_DATA,

@@ -71,12 +71,17 @@ void setup(void) {
     // With a 40000 Hz frequency, 12 ticks gives an alarm every 12/40000 s = 300
     // us. The third boolean parameter 'true' makes it autoreload, and 0 means
     // unlimited reloads (periodic alarm).
-    timerAlarm(timer, 12, true, 0);
   }
 
   // clear/init the DMD pixels held in RAM
   dmd.clearScreen(true); // true is normal (all pixels off), false is negative
                          // (all pixels on)
+
+  if (timer) {
+    // NOTE: if you have other things in the setup, move the timerAlarm call at
+    // the end of the setup function to avoid display issues during setup.
+    timerAlarm(timer, 12, true, 0);
+  }
 }
 
 /*--------------------------------------------------------------------------------------
