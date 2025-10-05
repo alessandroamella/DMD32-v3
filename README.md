@@ -54,9 +54,9 @@ Connect the DMD panel to your ESP32. The pins listed here are the defaults, but 
 |      GND      |         GND         | Ground                                |
 |      VCC      |         5V          | **Power (Requires external supply!)** |
 
-Here's a simple connection diagram, made by the [original DMD32 author](https://github.com/Qudor-Engineer):
+Here's a simple connection diagram, made by user [RARadchenko](https://github.com/RARadchenko), on a [GitHub issue he opened](https://github.com/Qudor-Engineer/DMD32/issues/25) with his solution to get the DMD32 working with ESP32 and Arduino Core v2.x.
 
-![DMD32 Connection Diagram](connection.png)
+![DMD32 Connection Diagram](images/wiring.png)
 
 **WARNING:** A single 32x16 DMD panel can draw significant current. **DO NOT power the panel from your ESP32's 5V pin.** Use a separate, stable 5V power supply (2A or more is recommended).
 
