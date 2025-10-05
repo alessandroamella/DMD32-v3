@@ -397,6 +397,44 @@ void DMD::drawFilledBox(int x1, int y1, int x2, int y2, byte bGraphicsMode) {
 }
 
 /*--------------------------------------------------------------------------------------
+ Draw a monochrome bitmap from PROGMEM.
+ The bitmap format is horizontal, 1 bit per pixel.
+--------------------------------------------------------------------------------------*/
+void DMD::drawBitmap(int x, int y, const uint8_t *bitmap, int width, int height,
+                     byte bGraphicsMode) {
+  // Calculate the number of bytes per row, padded to the nearest byte.
+  // For a 10-pixel wide image, (10 + 7) / 8 = 2 bytes per row.
+  int bytesPerRow = (width + 7) / 8;
+  uint8_t dataByte;
+
+  // Iterate over each row of the bitmap
+  for (int j = 0; j < height; j++) {
+    // Iterate over each pixel in the row
+    for (int i = 0; i < width; i++) {
+
+      // Every 8 pixels, we are at a new byte boundary. To be safe and clear,
+      // we can just re-calculate the byte index and read it for each pixel.
+      // Reading from PROGMEM is fast.
+      dataByte = pgm_read_byte(bitmap + (j * bytesPerRow) + (i / 8));
+
+      // Check if the specific bit for the current pixel (i) is set.
+      // We use a mask (0x80 >> (i % 8)) to check bits from left to right (MSB
+      // to LSB).
+
+      // For some reason I was getting it inverted
+      // if (dataByte & (0x80 >> (i % 8))) {
+      if (!(dataByte & (0x80 >> (i % 8)))) {
+        // If the bit is 1, draw the pixel on the screen.
+        // The existing writePixel function handles all screen mapping and
+        // clipping.
+        writePixel(x + i, y + j, bGraphicsMode, true);
+      }
+      // If the bit is 0, we do nothing, leaving the background "transparent".
+    }
+  }
+}
+
+/*--------------------------------------------------------------------------------------
  Draw the selected test pattern
 --------------------------------------------------------------------------------------*/
 void DMD::drawTestPattern(byte bPattern) {

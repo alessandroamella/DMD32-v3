@@ -157,6 +157,19 @@ public:
   // Draw or clear a filled box(rectangle) with a single pixel border
   void drawFilledBox(int x1, int y1, int x2, int y2, byte bGraphicsMode);
 
+  /**
+   * @brief Draws a monochrome bitmap from PROGMEM (flash memory).
+   *
+   * @param x The x-coordinate of the top-left corner.
+   * @param y The y-coordinate of the top-left corner.
+   * @param bitmap Pointer to the bitmap data stored in PROGMEM.
+   * @param width The width of the bitmap in pixels.
+   * @param height The height of the bitmap in pixels.
+   * @param bGraphicsMode The drawing mode (e.g., GRAPHICS_NORMAL).
+   */
+  void drawBitmap(int x, int y, const uint8_t *bitmap, int width, int height,
+                  byte bGraphicsMode);
+
   // Draw the selected test pattern
   void drawTestPattern(byte bPattern);
 
