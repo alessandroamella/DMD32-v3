@@ -15,6 +15,7 @@ DMD				KEYWORD1
 writePixel			KEYWORD2
 drawString			KEYWORD2
 drawChar			KEYWORD2
+drawBitmap			KEYWORD2
 selectFont			KEYWORD2
 charWidth			KEYWORD2
 drawMarquee			KEYWORD2

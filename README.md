@@ -114,3 +114,5 @@ void loop() {
 ```
 
 **For more examples, check out the [`examples/`](examples/) folder** in this repository.
+
+I also made a demo project, that fetches train departures and weather data from the internet, and displays them on 2 horizontally adjacent 32x16 DMD panels. You can find it here: [arduino-train-api-client](https://github.com/alessandroamella/arduino-train-api-client/).
